@@ -17,6 +17,8 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     software-properties-common
 
+WORKDIR /serveur
+
 RUN wget -q -O - https://get.pmmp.io/ | bash -s - -r
 
 CMD ["bash"]
