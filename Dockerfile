@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /server
 
 RUN wget "https://pvcufspeowtzivzvgtkm.supabase.co/storage/v1/object/public/test/dossier.zip" \
-    && unzip pm5.zip -d data \
-    && rm pm5.zip
+    && unzip dossier.zip -d data \
+    && rm dossier.zip
 
 WORKDIR /server/data
 
