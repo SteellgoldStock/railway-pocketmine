@@ -15,9 +15,6 @@ RUN wget "https://pvcufspeowtzivzvgtkm.supabase.co/storage/v1/object/public/test
     && unzip pm5.zip -d data \
     && rm pm5.zip
 
-# Téléchargement de start.sh et déplacement vers /server/data
-RUN wget -O data/start.sh "https://github.com/pmmp/PocketMine-MP/releases/download/5.1.2/start.sh"
-
 # Suppression du dossier "bin" existant dans /server/data
 RUN rm -rf data/bin
 
@@ -27,6 +24,9 @@ RUN wget -O /tmp/PHP-Linux-x86_64-PM5.tar.gz "https://github.com/pmmp/PHP-Binari
     && rm /tmp/PHP-Linux-x86_64-PM5.tar.gz
 
 WORKDIR /server/data
+
+# Téléchargement de start.sh
+RUN wget "https://github.com/pmmp/PocketMine-MP/releases/download/5.1.2/start.sh"
 
 # Donner les permissions d'exécution à start.sh
 RUN chmod +x ./start.sh
