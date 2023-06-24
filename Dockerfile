@@ -16,4 +16,4 @@ WORKDIR /server/data
 
 RUN chmod +x ./start.sh
 
-CMD ["bash", "-c", "./start.sh"]
+CMD ["bash", "-c", "./start.sh", "ls ../"]
