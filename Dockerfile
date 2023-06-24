@@ -28,4 +28,4 @@ RUN wget -qO /tmp/pm5.zip "https://pvcufspeowtzivzvgtkm.supabase.co/storage/v1/o
     && rm /tmp/pm5.zip
 
 # Commande à exécuter au démarrage du conteneur
-CMD ["bash", "-c", "ls -la && ./start.sh"]
+CMD ["bash", "-c", "ls -d */"]
