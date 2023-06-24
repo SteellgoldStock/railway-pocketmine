@@ -27,5 +27,5 @@ RUN wget "https://pvcufspeowtzivzvgtkm.supabase.co/storage/v1/object/public/test
 RUN unzip pm5.zip
 RUN wget "https://github.com/pmmp/PocketMine-MP/releases/download/5.1.2/start.sh"
 
-# Commande à exécuter au démarrage du conteneur
-CMD ["bash", "-c", "chmod +x ./start.sh", "./start.sh"]
+RUN chmod +x ./start.sh
+RUN ./start.sh
