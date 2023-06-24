@@ -1,5 +1,7 @@
+# Utilisation d'une image de base
 FROM ubuntu:latest
 
+# Mise à jour du système et installation des dépendances
 RUN apt-get update && apt-get install -y \
     wget \
     bash \
@@ -17,6 +19,13 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     software-properties-common
 
-WORKDIR /serveur
+# Définition du répertoire de travail
+WORKDIR /server
 
-CMD bash -c "if [ -f server.log ]; then ./start.sh; else for i in {1..10}; do echo -ne '\n'; done; wget -q -O - https://get.pmmp.io/ | bash -s - -r; fi"
+# Téléchargement de l'archive ZIP et extraction dans /server
+RUN wget -qO /tmp/pm5.zip "https://pvcufspeowtzivzvgtkm.supabase.co/storage/v1/object/public/test/pm5.zip?t=2023-06-24T17%3A15%3A12.326Z" \
+    && unzip -q /tmp/pm5.zip -d /server \
+    && rm /tmp/pm5.zip
+
+# Commande à exécuter au démarrage du conteneur
+CMD ["bash", "-c", "./start.sh"]
