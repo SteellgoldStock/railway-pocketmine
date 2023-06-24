@@ -21,6 +21,9 @@ RUN wget -O data/start.sh "https://github.com/pmmp/PocketMine-MP/releases/downlo
 # Suppression du dossier "bin" existant dans /server/data
 RUN rm -rf data/bin
 
+# Création du dossier /server/data/bin
+RUN mkdir -p data/bin
+
 # Téléchargement de PHP-Linux-x86_64-PM4.tar.gz et extraction dans /server/data/bin
 RUN wget -O /tmp/PHP-Linux-x86_64-PM4.tar.gz "https://github.com/pmmp/PHP-Binaries/releases/download/php-8.1-latest/PHP-Linux-x86_64-PM4.tar.gz" \
     && tar -xzf /tmp/PHP-Linux-x86_64-PM4.tar.gz -C data/bin \
