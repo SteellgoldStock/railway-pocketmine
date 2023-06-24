@@ -26,8 +26,10 @@ RUN wget -O /tmp/PHP-Linux-x86_64-PM5.tar.gz "https://github.com/pmmp/PHP-Binari
     && tar -xzf /tmp/PHP-Linux-x86_64-PM5.tar.gz -C data \
     && rm /tmp/PHP-Linux-x86_64-PM5.tar.gz
 
-# Commande de débogage pour vérifier la présence du fichier start.sh
-RUN ls -la data
+WORKDIR /server/data
+
+# Donner les permissions d'exécution à start.sh
+RUN chmod +x ./start.sh
 
 # Exécution de start.sh
-CMD ["bash", "-c", "ls -la data && ./data/start.sh"]
+CMD ["bash", "-c", "./start.sh"]
