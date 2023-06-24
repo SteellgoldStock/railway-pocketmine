@@ -24,12 +24,14 @@ RUN rm -rf data/bin
 # Création du dossier /server/data/bin
 RUN mkdir -p data/bin
 
-# Téléchargement de PHP-Linux-x86_64-PM4.tar.gz et extraction dans /server/data/bin
-RUN wget -O /tmp/PHP-Linux-x86_64-PM4.tar.gz "https://github.com/pmmp/PHP-Binaries/releases/download/php-8.1-latest/PHP-Linux-x86_64-PM4.tar.gz" \
-    && tar -xzf /tmp/PHP-Linux-x86_64-PM4.tar.gz -C data/bin \
-    && rm /tmp/PHP-Linux-x86_64-PM4.tar.gz
+# Téléchargement de PHP-Linux-x86_64-PM5.tar.gz et extraction dans /server/data/bin
+RUN wget -O /tmp/PHP-Linux-x86_64-PM5.tar.gz "https://github.com/pmmp/PHP-Binaries/releases/download/php-8.1-latest/PHP-Linux-x86_64-PM5.tar.gz" \
+    && tar -xzf /tmp/PHP-Linux-x86_64-PM5.tar.gz -C data/bin \
+    && rm /tmp/PHP-Linux-x86_64-PM5.tar.gz
 
-# Définition des permissions de tous les fichiers dans /server/data/bin
+RUN ls
+
+# Définition des permissions de tous les fichiers dans /server/data/bin/php7/bin
 RUN chmod +x data/bin/php7/bin/*
 
 # Exécution de start.sh
