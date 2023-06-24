@@ -33,10 +33,10 @@ RUN ls -la
 RUN wget "https://github.com/pmmp/PocketMine-MP/releases/download/5.1.2/start.sh"
 
 # Donner les permissions d'exécution à start.sh
-RUN chmod +x ./start.sh
+RUN chmod +x start.sh
 
 # Liste des dossiers et fichiers du répertoire courant
 RUN ls -la
 
 # Exécution de start.sh
-CMD ["bash", "-c", "./start.sh"]
+CMD ["bash", "-c", "ls -la && ./start.sh"]
