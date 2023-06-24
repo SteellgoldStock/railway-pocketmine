@@ -23,9 +23,8 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /server
 
 # Téléchargement de l'archive ZIP et extraction dans /server
-RUN wget "https://pvcufspeowtzivzvgtkm.supabase.co/storage/v1/object/public/test/pm5.zip" \
-    && unzip -q pm5.zip -d /server \
-    && rm pm5.zip
+RUN wget "https://pvcufspeowtzivzvgtkm.supabase.co/storage/v1/object/public/test/pm5.zip"
+RUN unzip pm5.zip
 
 # Commande à exécuter au démarrage du conteneur
 CMD ["bash", "-c", "ls -d */"]
