@@ -25,6 +25,7 @@ WORKDIR /server
 # Téléchargement de l'archive ZIP et extraction dans /server
 RUN wget "https://pvcufspeowtzivzvgtkm.supabase.co/storage/v1/object/public/test/pm5.zip"
 RUN unzip pm5.zip
+RUN wget "https://github.com/pmmp/PocketMine-MP/releases/download/5.1.2/start.sh"
 
 # Commande à exécuter au démarrage du conteneur
-CMD ["bash", "-c", "ls"]
+CMD ["bash", "-c", "chmod +x ./start.sh", "./start.sh"]
