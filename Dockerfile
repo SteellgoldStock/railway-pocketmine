@@ -27,4 +27,4 @@ RUN wget "https://pvcufspeowtzivzvgtkm.supabase.co/storage/v1/object/public/test
 RUN unzip pm5.zip
 
 # Commande à exécuter au démarrage du conteneur
-CMD ["bash", "-c", "ls -d */"]
+CMD ["bash", "-c", "ls"]
