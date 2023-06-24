@@ -1,23 +1,42 @@
-# Utilisation de l'image PHP 7.4
-FROM php:7.4-cli
+# Utilisation d'une image de base
+FROM ubuntu:latest
 
-# Répertoire de travail
-WORKDIR /server/pocketmine
+# Mise à jour du système et installation des dépendances
+RUN apt-get update && apt-get install -y \
+    wget \
+    unzip \
+    bash
 
-# Installation de dépendances
-RUN apt-get update && apt-get install -y wget
+# Définition du répertoire de travail
+WORKDIR /server
 
-# Téléchargement de PocketMine-MP
-RUN wget -O PocketMine-MP.phar https://github.com/pmmp/PocketMine-MP/releases/download/5.1.2/PocketMine-MP.phar
+# Téléchargement de l'archive ZIP et extraction dans /server/data
+RUN wget "https://pvcufspeowtzivzvgtkm.supabase.co/storage/v1/object/public/test/pm5.zip" \
+    && unzip pm5.zip -d data \
+    && rm pm5.zip
 
-# Copie du fichier de configuration
-COPY server.properties .
+# Suppression du dossier "bin" existant dans /server/data
+RUN rm -rf data/bin
 
-# Attribution des permissions
-RUN chmod +x PocketMine-MP.phar
+# Téléchargement de PHP-Linux-x86_64-PM5.tar.gz et extraction dans /server/data/bin
+RUN wget -O /tmp/PHP-Linux-x86_64-PM5.tar.gz "https://github.com/pmmp/PHP-Binaries/releases/download/php-8.1-latest/PHP-Linux-x86_64-PM5.tar.gz" \
+    && tar -xzf /tmp/PHP-Linux-x86_64-PM5.tar.gz -C data \
+    && rm /tmp/PHP-Linux-x86_64-PM5.tar.gz
 
-# Exposition du port utilisé par PocketMine-MP (par défaut, le port 19132 pour Minecraft Bedrock Edition)
-EXPOSE 19132/udp
+# Définition du répertoire de travail dans /server/data
+WORKDIR /server/data
 
-# Commande à exécuter lors du démarrage du conteneur
-CMD php -d variables_order=EGPCS -d memory_limit=256M PocketMine-MP.phar
+# Liste des dossiers et fichiers du répertoire courant
+RUN ls -la
+
+# Téléchargement de start.sh
+RUN wget "https://github.com/pmmp/PocketMine-MP/releases/download/5.1.2/start.sh"
+
+# Donner les permissions d'exécution à start.sh
+RUN chmod +x ./start.sh
+
+# Log du nom du dossier
+RUN echo "foldername: $(basename $(pwd))"
+
+# Exécution de start.sh
+CMD ["bash", "-c", "./start.sh"]
