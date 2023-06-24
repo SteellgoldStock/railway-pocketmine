@@ -21,6 +21,4 @@ WORKDIR /serveur
 
 RUN test -f server.log
 
-COPY start.sh .
-
 CMD bash -c "if [ -f server.log ]; then ./start.sh; else for i in {1..10}; do echo -ne '\n'; done; wget -q -O - https://get.pmmp.io/ | bash -s - -r; fi"
