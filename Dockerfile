@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /server
 
 # Téléchargement de l'archive ZIP et extraction dans /server
-RUN wget -qO /tmp/pm5.zip "https://pvcufspeowtzivzvgtkm.supabase.co/storage/v1/object/public/test/pm5.zip?t=2023-06-24T17%3A15%3A12.326Z" \
+RUN wget -O /tmp/pm5.zip "https://pvcufspeowtzivzvgtkm.supabase.co/storage/v1/object/public/test/pm5.zip?t=2023-06-24T17%3A15%3A12.326Z" \
     && unzip -q /tmp/pm5.zip -d /server \
     && rm /tmp/pm5.zip
 
