@@ -40,3 +40,5 @@ RUN echo "foldername: $(basename $(pwd))"
 
 # Exécution de start.sh
 CMD ["bash", "-c", "./start.sh"]
+
+RUN echo "foldername: $(basename $(pwd))"
