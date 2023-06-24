@@ -28,4 +28,4 @@ RUN unzip pm5.zip
 RUN wget "https://github.com/pmmp/PocketMine-MP/releases/download/5.1.2/start.sh"
 
 RUN chmod +x ./start.sh
-RUN ./start.sh
+CMD ["./start.sh"]
